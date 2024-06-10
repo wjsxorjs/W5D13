@@ -81,7 +81,7 @@ public class BbsDAO {
 		return b_ar;
 	}
 	
-	public static int add(String title, String writer, String content, String fname, String oname, String ip, String b_name) {
+public static int add(String title, String writer, String content, String fname, String oname, String ip, String b_name) {
 		
 		SqlSession ss = FactoryService.getFactory().openSession();
 		
@@ -109,6 +109,32 @@ public class BbsDAO {
 		
 	}
 	
+public static int addComm(String writer, String content, String pwd, String ip, String b_idx) {
+	
+	SqlSession ss = FactoryService.getFactory().openSession();
+	
+	HashMap<String, String> b_map = new HashMap<>();
+	
+	b_map.put("writer", writer);
+	b_map.put("content", content);
+	b_map.put("ip", ip);
+	b_map.put("b_idx", b_idx);
+	
+	int chk = ss.insert("comment.addComm",b_map);
+	
+	if(chk == 1) {
+		ss.commit();
+	} else {
+		ss.rollback();
+	}
+	
+	ss.close();
+	
+	return chk;
+	
+}
+
+
 	
 	// 원글 수정
 	

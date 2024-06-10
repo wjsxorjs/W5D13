@@ -116,14 +116,16 @@
 			</tbody>
 		</table>
 	</form>
-	<form method="post" action="ans_write.jsp">
+	<form method="post" action="Controller">
 		이름:<input type="text" name="writer"/><br/>
 		내용:<textarea rows="4" cols="55" name="comm"></textarea><br/>
 		비밀번호:<input type="password" name="pwd"/><br/>
 		
 		
-		<input type="hidden" name="b_idx" value="">
-		<input type="hidden" name="index" value=""/>
+		<input type="hidden" name="b_idx" value="${param.b_idx}">
+		<input type="hidden" name="bname" value="${param.bname}">
+		<input type="hidden" name="cPage" value="${param.cPage}"/>
+		<input type="hidden" name="type" value="comm"/>
 		<input type="submit" value="저장하기"/> 
 	</form>
 	

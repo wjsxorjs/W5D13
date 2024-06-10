@@ -11,4 +11,9 @@
 		WHERE b_idx = #{b_idx}
 	</select>
 
+	<insert id="addComm" parameterType="Map">
+		INSERT INTO comment_t( writer, content, pwd, write_date, ip, b_idx)
+		VALUES(#{writer}, #{content}, #{pwd},NOW(), #{ip}, #{b_idx});
+	</insert>
+
 </mapper>
