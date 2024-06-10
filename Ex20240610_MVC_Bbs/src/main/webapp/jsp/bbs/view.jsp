@@ -168,6 +168,15 @@
 				document.frm.submit();
 			}
 		}
+		
+		function down(fname){
+			// 인자로 사용자가 클릭한 파일명을 받는다.
+			// 이것을 현재 문서 안에 있는 frm이라는 폼 객체에 이름이
+			// fname이라는 hidden요소의 값(value)으로 지정해둔다.
+			document.frm.fname.value = fname;
+			document.frm.type.value = "down";
+			document.frm.submit();
+		}
 	</script>
 </body>
 </html>
