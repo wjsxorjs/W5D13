@@ -76,15 +76,15 @@
 		response.sendRedirect("Controller?type=list&bname=bbs");
 	}
 	
-	
 %>
 <body>
 	<div id="bbs">
 	<form action="Controller?type=edit" method="post" 
 	encType="multipart/form-data"> <%-- form에 파일을 첨부하게 될 때
 										encType을 multipart로 지정 --%>
-		<input type="hidden" name="bname" value="bbs"/>
+		<input type="hidden" name="bname" value="${param.bname}"/>
 		<input type="hidden" name="b_idx" value="<%=bvo.getB_idx()%>"/>
+		<input type="hidden" name="cPage" value="${param.cPage}"/>
 		<table summary="게시판 수정">
 			<caption>게시판 수정</caption>
 			<tbody>
@@ -121,7 +121,7 @@
 -->
 				<tr>
 					<td colspan="2">
-						<input type="button" value="보내기"
+						<input type="button" value="수정"
 						onclick="sendData()"/>
 						<input type="button" value="다시"/>
 						<input type="button" value="목록"

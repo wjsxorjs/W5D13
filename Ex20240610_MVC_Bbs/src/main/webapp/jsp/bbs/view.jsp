@@ -116,14 +116,16 @@
 			</tbody>
 		</table>
 	</form>
-	<form method="post" action="ans_write.jsp">
+	<form method="post" action="Controller">
 		이름:<input type="text" name="writer"/><br/>
 		내용:<textarea rows="4" cols="55" name="comm"></textarea><br/>
 		비밀번호:<input type="password" name="pwd"/><br/>
 		
 		
-		<input type="hidden" name="b_idx" value="">
-		<input type="hidden" name="index" value=""/>
+		<input type="hidden" name="b_idx" value="${param.b_idx}">
+		<input type="hidden" name="bname" value="${param.bname}">
+		<input type="hidden" name="cPage" value="${param.cPage}"/>
+		<input type="hidden" name="type" value="comm"/>
 		<input type="submit" value="저장하기"/> 
 	</form>
 	
@@ -158,10 +160,23 @@
 	
 	<script>
 		function doBbs(type){
+			let res = true;
 			document.frm.type.value = type;
-			<%if(bvo.getFile_name() != null){%>
-				document.frm.fname.value = "<%=bvo.getFile_name()%>";
-			<%}%>
+			
+			if(type == "del"){
+				res = confirm("삭제하시겠습니까?");
+			}
+			if(res){
+				document.frm.submit();
+			}
+		}
+		
+		function down(fname){
+			// 인자로 사용자가 클릭한 파일명을 받는다.
+			// 이것을 현재 문서 안에 있는 frm이라는 폼 객체에 이름이
+			// fname이라는 hidden요소의 값(value)으로 지정해둔다.
+			document.frm.fname.value = fname;
+			document.frm.type.value = "down";
 			document.frm.submit();
 		}
 	</script>
