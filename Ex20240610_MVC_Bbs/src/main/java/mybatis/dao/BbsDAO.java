@@ -139,7 +139,22 @@ public class BbsDAO {
 								
 	
 	
-	
+	public static int delBbs(String b_idx) {
+		
+		SqlSession ss = FactoryService.getFactory().openSession();
+
+		int chk = ss.update("bbs.delBbs",b_idx);
+		
+		if(chk > 0) {
+			ss.commit();
+		} else {
+			ss.rollback();
+		}
+		
+		ss.close();
+		
+		return chk;
+	}
 	
 	
 	

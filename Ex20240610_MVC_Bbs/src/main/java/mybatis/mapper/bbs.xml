@@ -66,6 +66,11 @@
 		</trim>
 		WHERE b_idx = #{b_idx}
 	</update>
-
+	
+	<update id="delBbs" parameterType="String">
+		UPDATE bbs_t
+		SET status = 1
+		WHERE b_idx = #{b_idx}
+	</update>
 
 </mapper>

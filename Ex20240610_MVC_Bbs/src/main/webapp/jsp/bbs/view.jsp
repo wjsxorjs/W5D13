@@ -159,9 +159,6 @@
 	<script>
 		function doBbs(type){
 			document.frm.type.value = type;
-			<%if(bvo.getFile_name() != null){%>
-				document.frm.fname.value = "<%=bvo.getFile_name()%>";
-			<%}%>
 			document.frm.submit();
 		}
 	</script>
