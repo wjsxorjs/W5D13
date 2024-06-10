@@ -110,4 +110,49 @@ public class BbsDAO {
 	}
 	
 	
+	// 원글 수정
+	
+	public static int edit (String b_idx, String subject, String content,
+							String fname, String oname, String ip) {
+		HashMap<String, String> e_map = new HashMap<>();
+		e_map.put("b_idx", b_idx);
+		e_map.put("subject", subject);
+		e_map.put("content", content);
+		if(fname != null) {
+			e_map.put("fname", fname);
+			e_map.put("oname", oname);
+		}
+		e_map.put("ip", ip);
+		
+		SqlSession ss = FactoryService.getFactory().openSession();
+		int chk = ss.update("bbs.edit",e_map);
+		if(chk>0) {
+			ss.commit();
+		} else {
+			ss.rollback();
+		}
+		ss.close();
+		return chk;
+		
+		
+	}
+								
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

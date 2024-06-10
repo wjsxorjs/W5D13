@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 글쓰기</title>
+<title>게시판 보기</title>
 <style type="text/css">
 	#bbs table { 
 	    width:580px;
@@ -146,7 +146,8 @@
 	
 	<form name="frm" action="Controller" method="post">
 		<input type="hidden" name="type" value="del" />
-		<input type="hidden" name="fname" value= "" />
+		<input type="hidden" name="fname"/>
+		<input type="hidden" name="source" value="view"/>
 		<input type="hidden" name="bname" value="${param.bname}" />
 		<input type="hidden" name="b_idx" value="${param.b_idx}" />
 		<input type="hidden" name="cPage" value="${param.cPage}" />
@@ -158,6 +159,9 @@
 	<script>
 		function doBbs(type){
 			document.frm.type.value = type;
+			<%if(bvo.getFile_name() != null){%>
+				document.frm.fname.value = "<%=bvo.getFile_name()%>";
+			<%}%>
 			document.frm.submit();
 		}
 	</script>
