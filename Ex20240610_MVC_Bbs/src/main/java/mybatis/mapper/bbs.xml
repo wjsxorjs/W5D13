@@ -46,7 +46,12 @@
 		VALUES(#{subject}, #{writer}, #{content}, #{file_name}, #{ori_name}, NOW(), #{ip}, 0, #{bname} , 0);
 	</insert>
 
-
+	<!-- 조회수 증가 -->
+	<update id="hitInc" parameterType="String">
+		UPDATE bbs_t
+		SET hit = hit+1
+		WHERE b_idx = #{b_idx}
+	</update>
 
 
 </mapper>

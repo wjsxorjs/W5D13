@@ -41,6 +41,23 @@ public class BbsDAO {
 		return bvo;
 	}
 	
+	public static int hitInc(String b_idx) {
+		
+		SqlSession ss = FactoryService.getFactory().openSession();
+
+		int chk = ss.update("bbs.hitInc",b_idx);
+		
+		if(chk > 0) {
+			ss.commit();
+		} else {
+			ss.rollback();
+		}
+		
+		ss.close();
+		
+		return chk;
+	}
+	
 	public static BbsVO[] getList(String bname, int begin, int end) {
 		BbsVO[] b_ar = null;
 		

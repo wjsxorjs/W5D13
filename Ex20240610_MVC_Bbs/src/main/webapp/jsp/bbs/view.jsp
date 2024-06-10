@@ -45,6 +45,20 @@
 	
 	.odd {background:silver}
 	
+	
+	.list_bg{
+		background: rgb(249,250,255);
+		padding: 10px;
+	}
+	
+	.list_item{
+		background: #fff;
+		border-radius: 10px;
+		padding: 20px;
+		margin-bottom: 10px;
+		box-shadow: rgb(204,204,204) 0px 2px 4px 0px;
+	}
+	
 		
 </style>
 <%
@@ -114,19 +128,20 @@
 	</form>
 	
 	댓글들<hr/>
-	<%
-		List<CommentVO> c_list = bvo.getC_list();
-		for(CommentVO cvo: c_list){
-	%>
 		<div class="list_bg">
-			<div class="list_item">
-				이름:<%=cvo.getWriter() %> &nbsp;&nbsp;
-				날짜:<%=cvo.getWrite_date() %><br/>
-				내용:<%=cvo.getContent() %>
-			</div>
+		<%
+			List<CommentVO> c_list = bvo.getC_list();
+			for(CommentVO cvo: c_list){
+		%>
+			
+				<div class="list_item">
+					이름:<%=cvo.getWriter() %> &nbsp;&nbsp;
+					날짜:<%=cvo.getWrite_date() %><br/>
+					내용:<%=cvo.getContent() %>
+				</div>
+			
+		<%} %>
 		</div>
-	<%} %>
-	
 	</div>
 	
 	<form name="frm" action="Controller" method="post">
