@@ -37,7 +37,8 @@ public class DelAction implements Action {
 		int chk = BbsDAO.delBbs(b_idx);
 
 		if(chk>0) {
-			viewPath = "/jsp/"+bname+"/del_success.jsp?bname="+bname+"&cPage="+cPage;
+//			viewPath = "/jsp/"+bname+"/del_success.jsp?bname="+bname+"&cPage="+cPage;
+			viewPath = "Controller?type=list&bname="+bname+"&cPage="+cPage;
 		} else {
 			viewPath = "/jsp/"+bname+"/view.jsp?bname="+bname+"&cPage="+cPage;
 		}

@@ -158,8 +158,15 @@
 	
 	<script>
 		function doBbs(type){
+			let res = true;
 			document.frm.type.value = type;
-			document.frm.submit();
+			
+			if(type == "del"){
+				res = confirm("삭제하시겠습니까?");
+			}
+			if(res){
+				document.frm.submit();
+			}
 		}
 	</script>
 </body>
